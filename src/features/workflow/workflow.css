@@ -1,0 +1,388 @@
+:root {
+  --ink-900: #1f2433;
+  --ink-700: #3c455c;
+  --ink-500: #707b95;
+  --line: #d9dfeb;
+  --surface: #ffffff;
+  --surface-2: #f5f8ff;
+  --mint: #1b9f7a;
+  --amber: #ce8b1f;
+  --blue: #2d76d0;
+  --rose: #cb4454;
+  --violet: #6b53c6;
+  --danger: #c5374a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Sora', 'Segoe UI', Tahoma, sans-serif;
+  color: var(--ink-900);
+  background:
+    radial-gradient(circle at 2% 2%, rgba(45, 118, 208, 0.12), transparent 26%),
+    radial-gradient(circle at 95% 7%, rgba(27, 159, 122, 0.11), transparent 22%),
+    linear-gradient(180deg, #eff5ff, #f7f8fb 44%, #f5f9ff);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.wf-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 240px minmax(500px, 1fr) 330px;
+  gap: 16px;
+  padding: 14px;
+}
+
+.wf-header,
+.wf-panel,
+.wf-palette,
+.wf-sandbox,
+.wf-canvas {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: 0 12px 26px rgba(20, 35, 69, 0.08);
+}
+
+.wf-canvas-shell {
+  min-width: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 14px;
+}
+
+.wf-header {
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wf-header h1,
+.wf-panel h2,
+.wf-palette h2,
+.wf-sandbox h2 {
+  margin: 4px 0 0;
+  font-family: 'Outfit', 'Trebuchet MS', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.wf-header h1 {
+  font-size: 1.5rem;
+}
+
+.wf-eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-500);
+}
+
+.wf-badge {
+  border-radius: 999px;
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  font-weight: 600;
+}
+
+.wf-badge.ok {
+  background: rgba(27, 159, 122, 0.12);
+  color: var(--mint);
+}
+
+.wf-badge.error {
+  background: rgba(203, 68, 84, 0.12);
+  color: var(--rose);
+}
+
+.wf-palette {
+  padding: 14px;
+}
+
+.wf-palette-list {
+  margin-top: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+.wf-palette-item {
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  cursor: grab;
+  background: var(--surface-2);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.wf-palette-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--blue);
+  box-shadow: 0 6px 14px rgba(45, 118, 208, 0.14);
+}
+
+.wf-palette-item h3 {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+}
+
+.wf-palette-item p {
+  margin: 0;
+  font-size: 0.79rem;
+  color: var(--ink-500);
+}
+
+.wf-canvas {
+  min-height: 420px;
+  overflow: hidden;
+}
+
+.wf-panel {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wf-form-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.wf-panel label,
+.wf-dynamic-fields p {
+  font-size: 0.82rem;
+  color: var(--ink-700);
+  display: grid;
+  gap: 6px;
+}
+
+.wf-panel input,
+.wf-panel textarea,
+.wf-panel select,
+.wf-kv-row input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  font: inherit;
+  font-size: 0.86rem;
+}
+
+.wf-panel textarea {
+  resize: vertical;
+}
+
+.wf-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wf-switch input {
+  width: auto;
+}
+
+.wf-delete-btn,
+.wf-sandbox button,
+.wf-inline-btn {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.wf-delete-btn {
+  background: rgba(197, 55, 74, 0.12);
+  color: var(--danger);
+}
+
+.wf-delete-btn:hover {
+  background: rgba(197, 55, 74, 0.16);
+}
+
+.wf-sandbox button,
+.wf-inline-btn {
+  background: rgba(45, 118, 208, 0.12);
+  color: var(--blue);
+}
+
+.wf-inline-btn.danger {
+  background: rgba(197, 55, 74, 0.12);
+  color: var(--danger);
+}
+
+.wf-inline-btn:hover,
+.wf-sandbox button:hover {
+  background: rgba(45, 118, 208, 0.19);
+}
+
+.wf-inline-btn.danger:hover {
+  background: rgba(197, 55, 74, 0.2);
+}
+
+.wf-kv-editor {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  background: var(--surface-2);
+}
+
+.wf-kv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.wf-kv-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.wf-sandbox {
+  padding: 12px;
+  animation: slideUp 260ms ease;
+}
+
+.wf-sandbox-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.wf-sandbox-body {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.wf-validation-box,
+.wf-simulation-box {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  min-height: 170px;
+}
+
+.wf-step-list {
+  margin: 0;
+  padding-left: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.wf-step {
+  display: grid;
+  gap: 3px;
+  font-size: 0.82rem;
+}
+
+.wf-step.success strong {
+  color: var(--mint);
+}
+
+.wf-step.warning strong {
+  color: var(--amber);
+}
+
+.wf-step.error strong {
+  color: var(--rose);
+}
+
+.wf-ok {
+  color: var(--mint);
+  margin: 0;
+  font-weight: 600;
+}
+
+.wf-muted {
+  color: var(--ink-500);
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.wf-node-card {
+  min-width: 180px;
+  border: 2px solid;
+  border-radius: 13px;
+  padding: 10px;
+  background: #fff;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  box-shadow: 0 6px 14px rgba(15, 31, 61, 0.08);
+}
+
+.wf-node-card.is-selected {
+  box-shadow: 0 0 0 2px rgba(45, 118, 208, 0.45), 0 8px 16px rgba(15, 31, 61, 0.14);
+}
+
+.wf-node-content h4 {
+  margin: 0;
+  font-size: 0.84rem;
+}
+
+.wf-node-content p {
+  margin: 2px 0 0;
+  font-size: 0.72rem;
+  color: var(--ink-500);
+}
+
+.wf-handle {
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fff;
+  background: var(--ink-500);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1200px) {
+  .wf-layout {
+    grid-template-columns: 200px minmax(420px, 1fr) 300px;
+  }
+
+  .wf-node-card {
+    min-width: 160px;
+  }
+}
+
+@media (max-width: 980px) {
+  .wf-layout {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .wf-canvas {
+    min-height: 360px;
+  }
+
+  .wf-sandbox-body {
+    grid-template-columns: 1fr;
+  }
+}
