@@ -9,7 +9,7 @@ Interactive mini-module to design and test HR workflows (onboarding, leave appro
 - Vite
 - React Flow
 
-- 
+  
 ## What Is Implemented
 
 1. React app bootstrapped with Vite + TypeScript
