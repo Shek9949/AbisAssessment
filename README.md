@@ -2,11 +2,14 @@
 
 Interactive mini-module to design and test HR workflows (onboarding, leave approval, document verification) using React + React Flow.
 
-## How to Run
 
-npm install
-npm run dev
+## Tech Stack
+- React
+- TypeScript
+- Vite
+- React Flow
 
+- 
 ## What Is Implemented
 
 1. React app bootstrapped with Vite + TypeScript
